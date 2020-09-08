@@ -1,0 +1,37 @@
+<div class="mt-2">
+  <div class="row">
+    <div class="col-lg-12 col-md-4 ">
+      <img [src]="item.imagePath" alt="" class="img-fluid img-thumbnail rounded">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 col-md-4">
+      <h1>{{ item.name }}</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 col-md-4" appDropdown>
+      <button class="btn btn-primary dropdown-toggle">Manage</button>
+      <ul class="dropdown-menu">
+        <li class="dropdown-item" (click)="addMultipleIngredientsToShoppingList()" style="cursor: pointer;">To Shopping List</li>
+        <li class="dropdown-item" (click)="onEdit()" style="cursor: pointer;">Edit</li>
+        <li class="dropdown-item" (click)="onDelete()" style="cursor: pointer;">Delete</li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 col-md-4">
+      {{ item.description }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 col-md-4">
+      <div class="list-group">
+        <li class="list-group-item" *ngFor="let ingredient of item.ingredients">
+          <h5>{{ ingredient.name}} - {{ ingredient.amount }}</h5>
+        </li>
+      </div>
+    </div>
+  </div>
+
+</div>

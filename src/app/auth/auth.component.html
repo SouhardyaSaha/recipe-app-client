@@ -1,0 +1,63 @@
+<div class="container mt-5 ">
+
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <!-- <div *ngIf="error" class="alert alert-danger text-center">
+        {{ error }}
+      </div> -->
+      <app-alert [message]="error" *ngIf="error" (close)="onClose()"></app-alert>
+      <div class="card text-center">
+        <div *ngIf="isLoading;else form">
+          <app-loading-spinner></app-loading-spinner>
+        </div>
+        <ng-template #form>
+          <div class="card-body">
+            <form action="" [formGroup]="authenticationForm" (ngSubmit)="onSubmit()" autocomplete="on">
+              <div class="row justify-content-center">
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <label for="email"><b>Email</b></label>
+                    <input
+                      [formControlName]="'email'"
+                      type="email"
+                      id="email"
+                      class="form-control"
+                      autofocus>
+                  </div>
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                <div class="col-md-8">
+                  <div class="form-group">
+                    <label for="password"><b>Password</b></label>
+                    <input
+                      [formControlName]="'password'"
+                      type="password"
+                      id="password"
+                      class="form-control">
+                  </div>
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                <div class="col-md-8">
+                  <button
+                    [disabled]="authenticationForm.invalid"
+                    class="btn btn-primary mr-2 mt-2"
+                    type="submit">
+                    {{ isLoginMode ? 'Login' : 'Registration' }}
+                  </button>
+                  <button
+                    (click)="onSwitchMode()"
+                    class="btn btn-primary mr-2 mt-2"
+                    type="button">
+                    Switch to {{ isLoginMode ?'Registration'  : 'Login' }}
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
